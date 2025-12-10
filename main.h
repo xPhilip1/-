@@ -5,6 +5,8 @@
 #include <Windows.h>
 #include <iomanip>
 #include <random>
+#include <cctype>
+#include<xlnt/xlnt.hpp>
 using namespace std;
 
 #define MAXSIZE 30
@@ -54,3 +56,5 @@ double Partition(SqList& L, int low, int high);
 void Qsort(SqList& L, int low, int high);//快速排序 
 string Encription(string password);//加密
 string Decription(string password);//解密
+string toLowerCase(string str);
+

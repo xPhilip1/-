@@ -1123,13 +1123,18 @@ void Add_StuInfo(SqList& L)
     Student s;
     while (1)
     {
-        cout << "input 0 -exit  |  1 -continue" << endl;
+        cout << "input 0 -exit | 1 -add by hand" << endl;
         cout << "choose : ";
         setTextColor(2);
         cin >> choice;
         setTextColor(COLOR_WHITE);
         if (choice == 0)
         {
+            ofstream addfile("Stu_data.txt", ios::out | ios::app);
+            if (!addfile.is_open())
+                cout << "txt opend unsuccessfully!! can't save the new student" << endl;
+            addfile << s.number << " " << s.name << " " << s.sex << " " << s.age << " " << s.grade << endl;
+            addfile.close();
             Qsort(L, 0, L.length - 1);
             return;
         }
@@ -1144,7 +1149,7 @@ void Add_StuInfo(SqList& L)
             setTextColor(2);
             cin >> s.name;
             setTextColor(COLOR_WHITE);
-            cout << "sex : ";
+            cout << "sex(male/female) : ";
             setTextColor(2);
             cin >> s.sex;
             setTextColor(COLOR_WHITE);
@@ -1161,6 +1166,7 @@ void Add_StuInfo(SqList& L)
                 cout << "grade must from 0 to 100!!" << endl;
                 continue;
             }
+            s.sex = toLowerCase(s.sex);
             if (L.length >= MAXSIZE)
             {
                 cout << "Student list is full, added unsuccessfully!!" << endl;
@@ -1168,11 +1174,6 @@ void Add_StuInfo(SqList& L)
             }
             L.Stu[L.length] = s;
             L.length++;
-            ofstream addfile("Stu_data.txt", ios::out | ios::app);
-            if (!addfile.is_open())
-                cout << "txt opend unsuccessfully!! can't save the new student" << endl;
-            addfile << s.number << " " << s.name << " " << s.sex << " " << s.age << " " << s.grade << endl;
-            addfile.close();
             cout << "added successfully!!" << endl;
         }
         else
@@ -1301,4 +1302,9 @@ void Qsort(SqList& L, int low, int high)
     }
 }
 
-
+string toLowerCase(string str) {
+    for (char& c : str) {  // 遍历每个字符（引用修改原字符）
+        c = std::tolower(static_cast<unsigned char>(c));
+    }
+    return str;
+}
