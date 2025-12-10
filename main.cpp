@@ -335,275 +335,360 @@ void Change_StuInfo(SqList& L)
         }
         case 1: {
             cout << "please input the student ID you want to change" << endl;
-            cout << "old ID : ";
-            setTextColor(2);
-            cin >> old_number;
-            setTextColor(COLOR_WHITE);
-            int cha_index = -1;
-            for (int i = 0; i < L.length; i++)
+            int choice;
+            while (1)
             {
-                if (L.Stu[i].number == old_number)
-                {
-                    cha_index = i;
-                    break;
-                }
-            }
-            if (cha_index == -1)
-            {
-                cout << "have no information of the student" << endl;
-                continue;
-            }
-            setTextColor(COLOR_CYAN);
-            cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            setTextColor(COLOR_WHITE);
-            setTextColor(2);
-            cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
-            setTextColor(COLOR_WHITE);
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            cout << "new ID : ";
-            setTextColor(2);
-            cin >> new_number;
-            setTextColor(COLOR_WHITE);
-            if (old_number == new_number)
-            {
-                cout << "the new ID can't be the same as old ID, changed unsuccessfully!!" << endl;
-                continue;
-            }
-            bool dup_num = false;
-            for (int i = 0; i < L.length; i++)
-            {
-                if (L.Stu[i].number == new_number)
-                {
-                    dup_num = true;
-                    cout << "the new student ID already exists, changed unsuccessfully!!" << endl;
-                    break;
-                }
-            }
-            if (!dup_num)
-            {
-                L.Stu[cha_index].number = new_number;
-                setTextColor(COLOR_CYAN);
-                cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
-                printColorText("---------------------------------------------------", COLOR_CYAN);
-                cout << endl;
-                setTextColor(COLOR_WHITE);
+                cout << "input 0 -exit  |  1 -continue" << endl;
+                cout << "choose : ";
                 setTextColor(2);
-                cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
+                cin >> choice;
                 setTextColor(COLOR_WHITE);
-                printColorText("---------------------------------------------------", COLOR_CYAN);
-                cout << endl;
-                cout << "changed successfully!!" << endl;
+                if (choice == 0)
+                    return;
+                else if (choice == 1)
+                {
+                    cout << "old ID : ";
+                    setTextColor(2);
+                    cin >> old_number;
+                    setTextColor(COLOR_WHITE);
+                    int cha_index = -1;
+                    for (int i = 0; i < L.length; i++)
+                    {
+                        if (L.Stu[i].number == old_number)
+                        {
+                            cha_index = i;
+                            break;
+                        }
+                    }
+                    if (cha_index == -1)
+                    {
+                        cout << "have no information of the student" << endl;
+                        continue;
+                    }
+                    setTextColor(COLOR_CYAN);
+                    cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    setTextColor(COLOR_WHITE);
+                    setTextColor(2);
+                    cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
+                    setTextColor(COLOR_WHITE);
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    cout << "new ID : ";
+                    setTextColor(2);
+                    cin >> new_number;
+                    setTextColor(COLOR_WHITE);
+                    if (old_number == new_number)
+                    {
+                        cout << "the new ID can't be the same as old ID, changed unsuccessfully!!" << endl;
+                        continue;
+                    }
+                    bool dup_num = false;
+                    for (int i = 0; i < L.length; i++)
+                    {
+                        if (L.Stu[i].number == new_number)
+                        {
+                            dup_num = true;
+                            cout << "the new student ID already exists, changed unsuccessfully!!" << endl;
+                            break;
+                        }
+                    }
+                    if (!dup_num)
+                    {
+                        L.Stu[cha_index].number = new_number;
+                        setTextColor(COLOR_CYAN);
+                        cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
+                        printColorText("---------------------------------------------------", COLOR_CYAN);
+                        cout << endl;
+                        setTextColor(COLOR_WHITE);
+                        setTextColor(2);
+                        cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
+                        setTextColor(COLOR_WHITE);
+                        printColorText("---------------------------------------------------", COLOR_CYAN);
+                        cout << endl;
+                        cout << "changed successfully!!" << endl;
+                    }
+                    break;
+                }
+                else
+                    cout << "error input!! please input again" << endl;
             }
-            break;
+
         }
         case 2: {
             cout << "please input the student ID to modify name" << endl;
-            cout << "student ID : ";
-            setTextColor(2);
-            cin >> old_number;
-            setTextColor(COLOR_WHITE);
-            int cha_index = -1;
-            for (int i = 0; i < L.length; i++)
+            int choice;
+            while (1)
             {
-                if (L.Stu[i].number == old_number)
+                cout << "input 0 -exit  |  1 -continue" << endl;
+                cout << "choose : ";
+                setTextColor(2);
+                cin >> choice;
+                setTextColor(COLOR_WHITE);
+                if (choice == 0)
+                    return;
+                else if (choice == 1)
                 {
-                    cha_index = i;
+                    cout << "student ID : ";
+                    setTextColor(2);
+                    cin >> old_number;
+                    setTextColor(COLOR_WHITE);
+                    int cha_index = -1;
+                    for (int i = 0; i < L.length; i++)
+                    {
+                        if (L.Stu[i].number == old_number)
+                        {
+                            cha_index = i;
+                            break;
+                        }
+                    }
+                    if (cha_index == -1)
+                    {
+                        cout << "have no information of the student" << endl;
+                        continue;
+                    }
+                    setTextColor(COLOR_CYAN);
+                    cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    setTextColor(COLOR_WHITE);
+                    setTextColor(2);
+                    cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
+                    setTextColor(COLOR_WHITE);
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    cout << "new name : ";
+                    setTextColor(2);
+                    cin >> new_name;
+                    setTextColor(COLOR_WHITE);
+                    if (L.Stu[cha_index].name == new_name)
+                    {
+                        cout << "the new name can't be the same as old name, changed unsuccessfully!!" << endl;
+                        continue;
+                    }
+                    L.Stu[cha_index].name = new_name;
+                    setTextColor(COLOR_CYAN);
+                    cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    setTextColor(COLOR_WHITE);
+                    setTextColor(2);
+                    cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
+                    setTextColor(COLOR_WHITE);
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    cout << "changed successfully!!" << endl;
                     break;
                 }
+                else
+                    cout << "error input!! please input again" << endl;
             }
-            if (cha_index == -1)
-            {
-                cout << "have no information of the student" << endl;
-                continue;
-            }
-            setTextColor(COLOR_CYAN);
-            cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            setTextColor(COLOR_WHITE);
-            setTextColor(2);
-            cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
-            setTextColor(COLOR_WHITE);
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            cout << "new name : ";
-            setTextColor(2);
-            cin >> new_name;
-            setTextColor(COLOR_WHITE);
-            if (L.Stu[cha_index].name == new_name)
-            {
-                cout << "the new name can't be the same as old name, changed unsuccessfully!!" << endl;
-                continue;
-            }
-            L.Stu[cha_index].name = new_name;
-            setTextColor(COLOR_CYAN);
-            cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            setTextColor(COLOR_WHITE);
-            setTextColor(2);
-            cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
-            setTextColor(COLOR_WHITE);
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            cout << "changed successfully!!" << endl;
-            break;
+
         }
         case 3: {
             cout << "please input the student ID to modify sex" << endl;
-            cout << "student ID : ";
-            setTextColor(2);
-            cin >> old_number;
-            setTextColor(COLOR_WHITE);
-            int cha_index = -1;
-            for (int i = 0; i < L.length; i++)
+            int choice;
+            while (1)
             {
-                if (L.Stu[i].number == old_number)
+                cout << "input 0 -exit  |  1 -continue" << endl;
+                cout << "choose : ";
+                setTextColor(2);
+                cin >> choice;
+                setTextColor(COLOR_WHITE);
+                if (choice == 0)
+                    return;
+                else if (choice == 1)
                 {
-                    cha_index = i;
+                    cout << "student ID : ";
+                    setTextColor(2);
+                    cin >> old_number;
+                    setTextColor(COLOR_WHITE);
+                    int cha_index = -1;
+                    for (int i = 0; i < L.length; i++)
+                    {
+                        if (L.Stu[i].number == old_number)
+                        {
+                            cha_index = i;
+                            break;
+                        }
+                    }
+                    if (cha_index == -1)
+                    {
+                        cout << "have no information of the student" << endl;
+                        continue;
+                    }
+                    setTextColor(COLOR_CYAN);
+                    cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    setTextColor(COLOR_WHITE);
+                    setTextColor(2);
+                    cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
+                    setTextColor(COLOR_WHITE);
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    if (L.Stu[cha_index].sex == "male")
+                        L.Stu[cha_index].sex = "female";
+                    else
+                        L.Stu[cha_index].sex = "male";
+                    setTextColor(COLOR_CYAN);
+                    cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    setTextColor(COLOR_WHITE);
+                    setTextColor(2);
+                    cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
+                    setTextColor(COLOR_WHITE);
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    cout << "changed successfully!!" << endl;
                     break;
                 }
+                else
+                    cout << "error input!! please input again" << endl;
             }
-            if (cha_index == -1)
-            {
-                cout << "have no information of the student" << endl;
-                continue;
-            }
-            setTextColor(COLOR_CYAN);
-            cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            setTextColor(COLOR_WHITE);
-            setTextColor(2);
-            cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
-            setTextColor(COLOR_WHITE);
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            if (L.Stu[cha_index].sex == "male")
-                L.Stu[cha_index].sex = "female";
-            else
-                L.Stu[cha_index].sex = "male";
-            setTextColor(COLOR_CYAN);
-            cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            setTextColor(COLOR_WHITE);
-            setTextColor(2);
-            cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
-            setTextColor(COLOR_WHITE);
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            cout << "changed successfully!!" << endl;
-            break;
+
         }
         case 4: {
             cout << "please input the student ID to modify age" << endl;
-            cout << "student ID : ";
-            setTextColor(2);
-            cin >> old_number;
-            setTextColor(COLOR_WHITE);
-            int cha_index = -1;
-            for (int i = 0; i < L.length; i++)
+            int choice;
+            while (1)
             {
-                if (L.Stu[i].number == old_number)
+                cout << "input 0 -exit  |  1 -continue" << endl;
+                cout << "choose : ";
+                setTextColor(2);
+                cin >> choice;
+                setTextColor(COLOR_WHITE);
+                if (choice == 0)
+                    return;
+                else if (choice == 1)
                 {
-                    cha_index = i;
+                    cout << "student ID : ";
+                    setTextColor(2);
+                    cin >> old_number;
+                    setTextColor(COLOR_WHITE);
+                    int cha_index = -1;
+                    for (int i = 0; i < L.length; i++)
+                    {
+                        if (L.Stu[i].number == old_number)
+                        {
+                            cha_index = i;
+                            break;
+                        }
+                    }
+                    if (cha_index == -1)
+                    {
+                        cout << "have no information of the student" << endl;
+                        continue;
+                    }
+                    setTextColor(COLOR_CYAN);
+                    cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    setTextColor(COLOR_WHITE);
+                    setTextColor(2);
+                    cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
+                    setTextColor(COLOR_WHITE);
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    cout << "new age : ";
+                    setTextColor(2);
+                    cin >> new_age;
+                    setTextColor(COLOR_WHITE);
+                    if (L.Stu[cha_index].age == new_age)
+                    {
+                        cout << "the new age can't be the same as old age, changed unsuccessfully!!" << endl;
+                        continue;
+                    }
+                    L.Stu[cha_index].age = new_age;
+                    setTextColor(COLOR_CYAN);
+                    cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    setTextColor(COLOR_WHITE);
+                    setTextColor(2);
+                    cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
+                    setTextColor(COLOR_WHITE);
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    cout << "changed successfully!!" << endl;
                     break;
                 }
+                else
+                    cout << "error input!! please input again" << endl;
             }
-            if (cha_index == -1)
-            {
-                cout << "have no information of the student" << endl;
-                continue;
-            }
-            setTextColor(COLOR_CYAN);
-            cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            setTextColor(COLOR_WHITE);
-            setTextColor(2);
-            cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
-            setTextColor(COLOR_WHITE);
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            cout << "new age : ";
-            setTextColor(2);
-            cin >> new_age;
-            setTextColor(COLOR_WHITE);
-            if (L.Stu[cha_index].age == new_age)
-            {
-                cout << "the new age can't be the same as old age, changed unsuccessfully!!" << endl;
-                continue;
-            }
-            L.Stu[cha_index].age = new_age;
-            setTextColor(COLOR_CYAN);
-            cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            setTextColor(COLOR_WHITE);
-            setTextColor(2);
-            cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
-            setTextColor(COLOR_WHITE);
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            cout << "changed successfully!!" << endl;
-            break;
+
         }
         case 5: {
             cout << "please input the student ID to modify grade" << endl;
-            cout << "student ID : ";
-            setTextColor(2);
-            cin >> old_number;
-            setTextColor(COLOR_WHITE);
-            int cha_index = -1;
-            for (int i = 0; i < L.length; i++)
+            int choice;
+            while (1)
             {
-                if (L.Stu[i].number == old_number)
+                cout << "input 0 -exit  |  1 -continue" << endl;
+                cout << "choose : ";
+                setTextColor(2);
+                cin >> choice;
+                setTextColor(COLOR_WHITE);
+                if (choice == 0)
+                    return;
+                else if (choice == 1)
                 {
-                    cha_index = i;
+                    cout << "student ID : ";
+                    setTextColor(2);
+                    cin >> old_number;
+                    setTextColor(COLOR_WHITE);
+                    int cha_index = -1;
+                    for (int i = 0; i < L.length; i++)
+                    {
+                        if (L.Stu[i].number == old_number)
+                        {
+                            cha_index = i;
+                            break;
+                        }
+                    }
+                    if (cha_index == -1)
+                    {
+                        cout << "have no information of the student" << endl;
+                        continue;
+                    }
+                    setTextColor(COLOR_CYAN);
+                    cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    setTextColor(COLOR_WHITE);
+                    setTextColor(2);
+                    cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
+                    setTextColor(COLOR_WHITE);
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    cout << "new grade : ";
+                    setTextColor(2);
+                    cin >> new_grade;
+                    setTextColor(COLOR_WHITE);
+                    if (L.Stu[cha_index].grade == new_grade)
+                    {
+                        cout << "the new grade can't be the same as old grade, changed unsuccessfully!!" << endl;
+                        continue;
+                    }
+                    L.Stu[cha_index].grade = new_grade;
+                    setTextColor(COLOR_CYAN);
+                    cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    setTextColor(COLOR_WHITE);
+                    setTextColor(2);
+                    cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
+                    setTextColor(COLOR_WHITE);
+                    printColorText("---------------------------------------------------", COLOR_CYAN);
+                    cout << endl;
+                    cout << "changed successfully!!" << endl;
                     break;
                 }
+                else
+                    cout << "error input!! please input again" << endl;
             }
-            if (cha_index == -1)
-            {
-                cout << "have no information of the student" << endl;
-                continue;
-            }
-            setTextColor(COLOR_CYAN);
-            cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            setTextColor(COLOR_WHITE);
-            setTextColor(2);
-            cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
-            setTextColor(COLOR_WHITE);
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            cout << "new grade : ";
-            setTextColor(2);
-            cin >> new_grade;
-            setTextColor(COLOR_WHITE);
-            if (L.Stu[cha_index].grade == new_grade)
-            {
-                cout << "the new grade can't be the same as old grade, changed unsuccessfully!!" << endl;
-                continue;
-            }
-            L.Stu[cha_index].grade = new_grade;
-            setTextColor(COLOR_CYAN);
-            cout << left << setw(12) << "学号" << setw(12) << "姓名" << setw(12) << "性别" << setw(12) << "年龄" << setw(12) << "成绩" << endl;
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            setTextColor(COLOR_WHITE);
-            setTextColor(2);
-            cout << left << setw(12) << L.Stu[cha_index].number.c_str() << setw(12) << L.Stu[cha_index].name.c_str() << setw(8) << L.Stu[cha_index].sex.c_str() << setw(8) << L.Stu[cha_index].age << setw(12) << L.Stu[cha_index].grade << endl;
-            setTextColor(COLOR_WHITE);
-            printColorText("---------------------------------------------------", COLOR_CYAN);
-            cout << endl;
-            cout << "changed successfully!!" << endl;
-            break;
+
         }
         default: cout << "error input!! please input again" << endl; break;
         }
@@ -632,28 +717,45 @@ void Del_StuInfo(SqList& L)
         else if (choice == 1)
         {
             cout << "please input the ID of the student you want to delete" << endl;
-            cout << "student ID : ";
-            setTextColor(2);
-            cin >> de_num;
-            setTextColor(COLOR_WHITE);
-            int de_index = -1;
-            for (int i = 0; i < L.length; i++)
+            int choice;
+            while (1)
             {
-                if (L.Stu[i].number == de_num)
+                cout << "input 0 -exit  |  1 -continue" << endl;
+                cout << "choose : ";
+                setTextColor(2);
+                cin >> choice;
+                setTextColor(COLOR_WHITE);
+                if (choice == 0)
+                    return;
+                else if (choice == 1)
                 {
-                    de_index = i;
-                    break;
+                    cout << "student ID : ";
+                    setTextColor(2);
+                    cin >> de_num;
+                    setTextColor(COLOR_WHITE);
+                    int de_index = -1;
+                    for (int i = 0; i < L.length; i++)
+                    {
+                        if (L.Stu[i].number == de_num)
+                        {
+                            de_index = i;
+                            break;
+                        }
+                    }
+                    if (de_index == -1)
+                    {
+                        cout << "have no information of the student" << endl;
+                        continue;
+                    }
+                    for (int i = de_index; i < L.length - 1; i++)
+                        L.Stu[i] = L.Stu[i + 1];
+                    L.length--;
+                    cout << "the student information deleted successfully!" << endl;
                 }
+                else
+                    cout << "error input!! please input again" << endl;
             }
-            if (de_index == -1)
-            {
-                cout << "have no information of the student" << endl;
-                continue;
-            }
-            for (int i = de_index; i < L.length - 1; i++)
-                L.Stu[i] = L.Stu[i + 1];
-            L.length--;
-            cout << "the student information deleted successfully!" << endl;
+
             ofstream delFile("Stu_data.txt", ios::out | ios::trunc);
             for (int i = 0; i < L.length; i++)
                 delFile << L.Stu[i].number << " " << L.Stu[i].name << " " << L.Stu[i].sex << " " << L.Stu[i].age << " " << L.Stu[i].grade << endl;
@@ -1198,4 +1300,5 @@ void Qsort(SqList& L, int low, int high)
         Qsort(L, pivotloc + 1, high);
     }
 }
+
 
